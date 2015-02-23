@@ -7,8 +7,11 @@ public class Spool {
 
 	// ********************************************************* Fields
 	private SpoolName spoolName;
+	
 	private SpoolIncrement increment;
 	private DateTime creationTime;
+	private DispatchCode dispatchCode;
+	private RegionCode regionCode;
 
 	// ********************************************************* Constructor
 
@@ -20,5 +23,17 @@ public class Spool {
 	
 	public DateTime getCreationTime() {
 		return creationTime;
+	}
+	
+	public DispatchCode getDispatchCode() {
+		return dispatchCode;
+	}
+	
+	public SpoolIncrement getIncrement() {
+		return increment;
+	}
+	
+	public RegionCode getRegionCode() {
+		return regionCode;
 	}
 }
