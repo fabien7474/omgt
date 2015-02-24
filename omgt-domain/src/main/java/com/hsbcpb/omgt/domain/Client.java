@@ -6,6 +6,7 @@ public class Client extends ObjectFunctionalKeyAware {
 
 	// ********************************************************* Fields
 	private AccountNumber accountNumber;
+	private CustomerNumber customerNumber;
 
 	// ********************************************************* Constructor
 
@@ -15,7 +16,6 @@ public class Client extends ObjectFunctionalKeyAware {
 	}
 
 	// ********************************************************* Business
-	// Methods
 
 	// ********************************************************* Getters
 
@@ -27,8 +27,13 @@ public class Client extends ObjectFunctionalKeyAware {
 		return accountNumber;
 	}
 
+	
+	public CustomerNumber getCustomerNumber() {
+		return customerNumber;
+	}
+	
+	
 	// ********************************************************* Technical
-	// Methods
 	@Override
 	public ClientFK getFunctionalKey() {
 		return new ClientFK(getAccountNumber());

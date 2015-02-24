@@ -4,13 +4,13 @@ import com.hsbcpb.omgt.commons.BaseValueObject;
 import com.hsbcpb.omgt.commons.annotations.ValueObject;
 
 @ValueObject
-public class AccountNumber extends BaseValueObject {
+public class CustomerNumber extends BaseValueObject {
 	
 	// ********************************************************* Fields
 	private String number;
 
 	// ********************************************************* Constructor
-	public AccountNumber(String number) {
+	public CustomerNumber(String number) {
 		super();
 		this.number = number;
 	}

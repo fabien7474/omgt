@@ -1,11 +1,13 @@
 package com.hsbcpb.omgt.domain;
 
 import com.hsbcpb.omgt.commons.BaseValueObject;
+import com.hsbcpb.omgt.commons.annotations.ValueObject;
 
 /** 
  * Mailing address
  *
  */
+@ValueObject
 public class Address extends BaseValueObject {
 
 	// ********************************************************* Fields
