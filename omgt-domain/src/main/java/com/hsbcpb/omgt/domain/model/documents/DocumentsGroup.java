@@ -11,15 +11,19 @@ import com.hsbcpb.omgt.domain.model.Address;
 import com.hsbcpb.omgt.domain.model.DispatchCode;
 import com.hsbcpb.omgt.domain.model.RegionCode;
 
+/**
+ * Documents grouped by common characteristics.
+ * Documents in the same group cannot be split up by spools.
+ */
 @Entity
 public class DocumentsGroup extends ObjectFunctionalKeyAware {
 
 	// ********************************************************* Fields
-	private List<Document> documents = new ArrayList<Document>();
-
 	private DispatchCode dispatchCode;
 	private RegionCode regionCode;
 	private Address address;
+	
+	private List<Document> documents = new ArrayList<Document>();
 
 	// ********************************************************* Constructor
 

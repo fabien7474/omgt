@@ -6,6 +6,10 @@ import javax.validation.constraints.Size;
 import com.hsbcpb.omgt.core.BaseValueObject;
 import com.hsbcpb.omgt.core.annotations.ValueObject;
 
+/**
+ * Represents a dispatch code
+ *
+ */
 @ValueObject
 public class DispatchCode extends BaseValueObject {
 

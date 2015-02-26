@@ -14,11 +14,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.hsbcpb.omgt.domain.model.DispatchCode;
-import com.hsbcpb.omgt.domain.model.DispatchCodesConfiguration;
 import com.hsbcpb.omgt.domain.model.documents.Document;
 import com.hsbcpb.omgt.domain.model.spools.SpoolRouting;
-import com.hsbcpb.omgt.domain.service.spools.SpoolRoutingService;
-import com.hsbcpb.omgt.domain.service.spools.impl.SpoolRoutingServiceImpl;
+import com.hsbcpb.omgt.domain.service.impl.SpoolRoutingServiceImpl;
 
 /**
  * Test suite for SpoolRouting business rules
@@ -26,7 +24,7 @@ import com.hsbcpb.omgt.domain.service.spools.impl.SpoolRoutingServiceImpl;
 public class SpoolRoutingServiceTest {
 	
 	private SpoolRoutingService spoolRoutingService;
-	private DispatchCodesConfiguration config;
+	private DispatchCodesRepository config;
 	private Document doc;
 
 	/**
@@ -34,7 +32,7 @@ public class SpoolRoutingServiceTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		config = mock(DispatchCodesConfiguration.class);
+		config = mock(DispatchCodesRepository.class);
 		spoolRoutingService = new SpoolRoutingServiceImpl(config);
 		doc = mock(Document.class);
 	}
@@ -90,7 +88,7 @@ public class SpoolRoutingServiceTest {
 		return spoolRootingResult;
 	}
 	
-	private DispatchCodesConfiguration setupDispatchCodesConfiguration(String... automaticCodes) {
+	private DispatchCodesRepository setupDispatchCodesConfiguration(String... automaticCodes) {
 		
 		List<DispatchCode> returnedAutomaticCodes = new ArrayList<DispatchCode>();
 		for (String automaticCode : automaticCodes) {

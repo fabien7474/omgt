@@ -1,18 +1,18 @@
 package com.hsbcpb.omgt.domain.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.mockito.Mockito.*;
-import static org.assertj.core.api.Assertions.*;
 
 import com.hsbcpb.omgt.domain.model.DispatchCode;
 import com.hsbcpb.omgt.domain.model.EnvelopeSize;
 import com.hsbcpb.omgt.domain.model.RegionCode;
 import com.hsbcpb.omgt.domain.model.spools.Spool;
-import com.hsbcpb.omgt.domain.service.spools.SpoolNameGenerator;
-import com.hsbcpb.omgt.domain.service.spools.impl.SpoolNameGeneratorImpl;
+import com.hsbcpb.omgt.domain.model.spools.SpoolNameGenerator;
 
 /**
  * Class that tests the {@link SpoolNameGenerator} behavior 
@@ -20,13 +20,10 @@ import com.hsbcpb.omgt.domain.service.spools.impl.SpoolNameGeneratorImpl;
  */
 public class SpoolNameGeneratorTest {
 
-	// ********************************************************* Injection Fields
-	private SpoolNameGenerator generator;
 	
 	// ********************************************************* Fixture Fields
 	Spool spool;
 	String heading;
-	DateTime creationDate;
 	
 	// ********************************************************* Result Fields
 	String spoolName;
@@ -35,9 +32,8 @@ public class SpoolNameGeneratorTest {
 	// ********************************************************* Setup
 	@Before
 	public void setUp() throws Exception {
-		generator = new SpoolNameGeneratorImpl();
-		spool = setupSpool(EnvelopeSize.C4, "NOR", "OTH", 1);
-		creationDate = new DateTime(2015, 3, 1, 10, 15, 30);
+		DateTime creationDate = new DateTime(2015, 3, 1, 10, 15, 30);
+		spool = setupSpool(EnvelopeSize.C4, "NOR", "OTH", 1, creationDate);
 		heading = "G";
 	}
 
@@ -71,19 +67,20 @@ public class SpoolNameGeneratorTest {
 	}
 
 	private void generateSpoolName() {
-		spoolName = generator.generateSpoolName(spool, heading, creationDate);
+		spoolName = SpoolNameGenerator.generateSpoolName(spool, heading);
 	}
 
-	private void changeCreationDate(DateTime newCreationDate)  {
-		creationDate = newCreationDate;
+	private void changeCreationDate(DateTime newCreationDateTime)  {
+		when(spool.getCreationDateTime()).thenReturn(newCreationDateTime);
 	}
 	
-	private Spool setupSpool(EnvelopeSize size, String dispatchCode, String regionCode, Integer increment) {
-		Spool spool = mock(Spool.class);
+	private Spool setupSpool(EnvelopeSize size, String dispatchCode, String regionCode, Integer increment, DateTime creationDateTime) {
+		spool = mock(Spool.class);
 		when(spool.getSize()).thenReturn(size);
 		when(spool.getDispatchCode()).thenReturn(new DispatchCode(dispatchCode));
 		when(spool.getRegionCode()).thenReturn(new RegionCode(regionCode));
 		when(spool.getIncrement()).thenReturn(increment);
+		when(spool.getCreationDateTime()).thenReturn(creationDateTime);
 		return spool;
 	}
 

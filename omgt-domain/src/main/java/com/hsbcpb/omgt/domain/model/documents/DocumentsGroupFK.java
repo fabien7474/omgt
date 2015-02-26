@@ -5,6 +5,10 @@ import com.hsbcpb.omgt.domain.model.Address;
 import com.hsbcpb.omgt.domain.model.DispatchCode;
 import com.hsbcpb.omgt.domain.model.RegionCode;
 
+/**
+ * Functional Key of a {@link DocumentsGroup}
+ *
+ */
 public class DocumentsGroupFK extends FunctionalKeyAbstract<Document> {
 
 	// ********************************************************* Fields

@@ -1,5 +1,6 @@
 package com.hsbcpb.omgt.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -21,7 +22,7 @@ public class DocumentTest extends AbstractValidationTest<Document> {
 		documentBuilder = new DocumentBuilder();
 		documentBuilder.id("1").code("PDF").dispatchCode("NOR")
 				.address(Arrays.asList("Line 1"))
-				.client("Cust#1", "Joe Dassin", null).pages(2)
+				.customer("Cust#1", "Joe Dassin", null).pages(2)
 				.society("Society#1");
 
 	}
@@ -65,5 +66,12 @@ public class DocumentTest extends AbstractValidationTest<Document> {
 		testAllConstraintViolations();
 	}
 	
+	@Test
+	public void testAddressWithNoLines() {
+		Document doc = documentBuilder.address(new ArrayList<String>()).build();
+		validate(doc);
+		addExpectedConstraintViolation("address.lines");
+		testAllConstraintViolations();
+	}
 	
 }
