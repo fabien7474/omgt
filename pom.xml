@@ -12,6 +12,7 @@
 
 	<modules>
 		<module>omgt-domain</module>
+		<module>omgt-batch</module>
 	</modules>
 
 	<properties>

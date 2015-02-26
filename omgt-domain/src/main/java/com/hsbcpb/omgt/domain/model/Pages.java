@@ -3,6 +3,12 @@ package com.hsbcpb.omgt.domain.model;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import com.hsbcpb.omgt.domain.model.documents.Document;
+
+/**
+ * Represents pages of a {@link Document}
+ *
+ */
 public class Pages {
 
 	// ********************************************************* Fields

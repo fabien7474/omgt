@@ -8,6 +8,10 @@ import javax.validation.ValidatorFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Factory to create a JavaBean validator
+ *
+ */
 public class ValidatorFactoryDefault {
 
     private static final Logger log = LoggerFactory.getLogger(ValidatorFactoryDefault.class);

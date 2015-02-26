@@ -1,6 +1,5 @@
 package com.hsbcpb.omgt.domain.model.spools;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,8 +11,12 @@ import org.joda.time.DateTime;
 import com.hsbcpb.omgt.core.annotations.Aggregate;
 import com.hsbcpb.omgt.domain.model.EnvelopeSize;
 import com.hsbcpb.omgt.domain.model.documents.DocumentsGroup;
-import com.hsbcpb.omgt.domain.service.spools.SpoolRoutingService;
+import com.hsbcpb.omgt.domain.service.SpoolRoutingService;
 
+/**
+ * Represents the list of the spools to be printed
+ *
+ */
 @Aggregate
 public class SpoolList {
 
@@ -22,13 +25,13 @@ public class SpoolList {
 	
 	
 	// ********************************************************* Fields
-	private DateTime creationTime;
+	private DateTime creationDateTime;
 
 	private List<Spool> spools = new ArrayList<Spool>();
 
 	// ********************************************************* Constructor
-	public SpoolList(DateTime creationTime, SpoolRoutingService spoolRoutingService) {
-		this.creationTime = creationTime;
+	public SpoolList(DateTime creationDateTime, SpoolRoutingService spoolRoutingService) {
+		this.creationDateTime = creationDateTime;
 		this.spoolRoutingService = spoolRoutingService;
 	}
 
@@ -48,7 +51,7 @@ public class SpoolList {
 		if (matchingSpool != null) {
 			matchingSpool.addDocumentsGroup(group);
 		} else {
-			Spool spool = new Spool(group.getDispatchCode(), group.getRegionCode(), size, 1);
+			Spool spool = new Spool(group.getDispatchCode(), group.getRegionCode(), size, 1, creationDateTime);
 			spools.add(spool);
 		}
 	}
@@ -67,15 +70,9 @@ public class SpoolList {
 
 	}
 
-	public String generateSpoolName(int index, String heading) {
-		Spool spool = spools.get(0);
-		String spoolName = spool.generateSpoolName(heading, getCreationTime());
-		return spoolName;
-	}
-
 	// ********************************************************* Getters
-	public DateTime getCreationTime() {
-		return creationTime;
+	public DateTime getCreationDateTime() {
+		return creationDateTime;
 	}
 	
 	public List<Spool> getSpools() {

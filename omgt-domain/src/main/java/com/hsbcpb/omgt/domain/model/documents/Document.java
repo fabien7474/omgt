@@ -11,7 +11,7 @@ import com.hsbcpb.omgt.core.ObjectFunctionalKeyAware;
 import com.hsbcpb.omgt.core.annotations.Aggregate;
 import com.hsbcpb.omgt.domain.model.AccountNumber;
 import com.hsbcpb.omgt.domain.model.Address;
-import com.hsbcpb.omgt.domain.model.Client;
+import com.hsbcpb.omgt.domain.model.Customer;
 import com.hsbcpb.omgt.domain.model.CustomerNumber;
 import com.hsbcpb.omgt.domain.model.DispatchCode;
 import com.hsbcpb.omgt.domain.model.Pages;
@@ -31,13 +31,13 @@ public class Document extends ObjectFunctionalKeyAware {
 	private DispatchCode dispatchCode;
 	private RegionCode regionCode;
 	private Address address;
-	private Client client;
+	private Customer customer;
 	private Society society;
 	private Pages pages;
 
 	// ********************************************************* Constructor
 	Document(String id, DocumentCode documentCode, DispatchCode dispatchCode,
-			RegionCode regionCode, Address address, Client client,
+			RegionCode regionCode, Address address, Customer customer,
 			Society society, Pages pages) {
 		super();
 		this.id = id;
@@ -45,7 +45,7 @@ public class Document extends ObjectFunctionalKeyAware {
 		this.dispatchCode = dispatchCode;
 		this.regionCode = regionCode;
 		this.address = address;
-		this.client = client;
+		this.customer = customer;
 		this.society = society;
 		this.pages = pages;
 	}
@@ -103,8 +103,8 @@ public class Document extends ObjectFunctionalKeyAware {
 
 	@NotNull
 	@Valid
-	public Client getClient() {
-		return client;
+	public Customer getCustomer() {
+		return customer;
 	}
 
 	@NotNull
@@ -141,7 +141,7 @@ public class Document extends ObjectFunctionalKeyAware {
 		private DispatchCode dispatchCode;
 		private RegionCode regionCode;
 		private Address address;
-		private Client client;
+		private Customer customer;
 		private Society society;
 		private Pages pages;
 		
@@ -174,8 +174,8 @@ public class Document extends ObjectFunctionalKeyAware {
 			return this;
 		}
 		
-		public DocumentBuilder client(String custNumber, String shortName, String accountNumber) {
-			this.client = new Client(new CustomerNumber(custNumber), shortName, new AccountNumber(accountNumber));
+		public DocumentBuilder customer(String custNumber, String shortName, String accountNumber) {
+			this.customer = new Customer(new CustomerNumber(custNumber), shortName, new AccountNumber(accountNumber));
 			return this;
 		}
 		
@@ -190,7 +190,7 @@ public class Document extends ObjectFunctionalKeyAware {
 		}
 		
 		public Document build() {
-			return new Document(id, documentCode, dispatchCode, regionCode, address, client, society, pages);
+			return new Document(id, documentCode, dispatchCode, regionCode, address, customer, society, pages);
 		}
 		
 	}

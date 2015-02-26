@@ -6,6 +6,10 @@ import javax.validation.constraints.Size;
 import com.hsbcpb.omgt.core.BaseValueObject;
 import com.hsbcpb.omgt.core.annotations.ValueObject;
 
+/**
+ * Number of a {@link Customer}
+ *
+ */
 @ValueObject
 public class CustomerNumber extends BaseValueObject {
 	

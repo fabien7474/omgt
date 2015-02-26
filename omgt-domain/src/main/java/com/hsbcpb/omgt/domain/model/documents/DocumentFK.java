@@ -2,6 +2,10 @@ package com.hsbcpb.omgt.domain.model.documents;
 
 import com.hsbcpb.omgt.core.FunctionalKeyAbstract;
 
+/**
+ * Functional key of a {@link Document}
+ *
+ */
 public class DocumentFK extends FunctionalKeyAbstract<Document> {
 
 	// ********************************************************* Fields
